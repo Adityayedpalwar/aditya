@@ -1331,18 +1331,17 @@
     });
 
     // Contact Form
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-  // 1. Create the data object using the variables from lines 1340-1343
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
+
   const data = {
     name: name,
     email: email,
@@ -1352,30 +1351,25 @@
   };
 
   try {
-    // 2. This command sends the data to your 'contacts' collection
     await addDoc(collection(db, "contacts"), data);
 
-    // 3. Show the success message ONLY after it safely reaches the database
     formMessage.classList.remove('hidden', 'bg-red-900/50');
     formMessage.classList.add('bg-green-900/50', 'text-green-300');
     formMessage.textContent = `Success! Message received, ${name}.`;
     
-    // Clear the form
     contactForm.reset();
 
+    setTimeout(() => {
+      formMessage.classList.add('hidden');
+    }, 5000);
+
   } catch (error) {
-    // This will tell you if your 'Rules' are still locked or there's a connection issue
     formMessage.classList.remove('hidden');
     formMessage.classList.add('bg-red-900/50', 'text-red-200');
     formMessage.textContent = "Database Error: " + error.message;
   }
+});
 
-      contactForm.reset();
-
-      setTimeout(() => {
-        formMessage.classList.add('hidden');
-      }, 5000);
-    });
 
     // Fade Up Animation
     const style = document.createElement('style');
