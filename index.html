@@ -1373,16 +1373,18 @@
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e27a8a7d4a24460',t:'MTc3NDU0Mzg3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 <script type="module">
+  // Using Firestore as per your latest screenshots
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+  // Configuration based on your 'portfolio-contact' project
   const firebaseConfig = {
-    apiKey: "YOUR_KEY",
-    authDomain: "YOUR_DOMAIN",
-    projectId: "YOUR_ID",
-    storageBucket: "YOUR_BUCKET",
-    messagingSenderId: "YOUR_MSG_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "YOUR_API_KEY", // Get this from Project Settings > Web App in Firebase Console
+    authDomain: "portfolio-contact-80a09.firebaseapp.com",
+    projectId: "portfolio-contact-80a09",
+    storageBucket: "portfolio-contact-80a09.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // Get this from your Firebase Settings
+    appId: "YOUR_APP_ID" // Get this from your Firebase Settings
   };
 
   const app = initializeApp(firebaseConfig);
@@ -1394,6 +1396,12 @@
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // Visual feedback for the button
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "SENDING...";
+    submitBtn.disabled = true;
+
     const data = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
@@ -1403,16 +1411,26 @@
     };
 
     try {
+      // Sending to the "contacts" collection seen in your screenshot
       await addDoc(collection(db, "contacts"), data);
 
-      formMessage.classList.remove("hidden");
-      formMessage.textContent = "Message sent successfully!";
+      formMessage.classList.remove("hidden", "bg-red-900/50");
+      formMessage.classList.add("bg-green-900/50", "text-green-300");
+      formMessage.textContent = "Success! Your message is in the database.";
       contactForm.reset();
 
     } catch (error) {
-      formMessage.textContent = "Error sending message";
-      console.error(error);
+      formMessage.classList.remove("hidden");
+      formMessage.classList.add("bg-red-900/50", "text-red-300");
+      formMessage.textContent = "Error: Check your Firebase Rules.";
+      console.error("Firestore Error:", error);
+    } finally {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+      setTimeout(() => formMessage.classList.add("hidden"), 5000);
     }
   });
 </script>
+
+ 
 </html>
