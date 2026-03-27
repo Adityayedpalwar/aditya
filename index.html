@@ -1342,12 +1342,34 @@
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
 
+  // 1. Create the data object using the variables from lines 1340-1343
+  const data = {
+    name: name,
+    email: email,
+    subject: subject,
+    message: message,
+    createdAt: new Date()
+  };
 
-      // Show success message
-      formMessage.classList.remove('hidden', 'bg-red-900/50');
-      formMessage.classList.add('bg-green-900/50', 'text-green-300');
-      formMessage.textContent = `Thanks ${name}! Your message has been received. I'll get back to you soon!`;
-      
+  try {
+    // 2. This command sends the data to your 'contacts' collection
+    await addDoc(collection(db, "contacts"), data);
+
+    // 3. Show the success message ONLY after it safely reaches the database
+    formMessage.classList.remove('hidden', 'bg-red-900/50');
+    formMessage.classList.add('bg-green-900/50', 'text-green-300');
+    formMessage.textContent = `Success! Message received, ${name}.`;
+    
+    // Clear the form
+    contactForm.reset();
+
+  } catch (error) {
+    // This will tell you if your 'Rules' are still locked or there's a connection issue
+    formMessage.classList.remove('hidden');
+    formMessage.classList.add('bg-red-900/50', 'text-red-200');
+    formMessage.textContent = "Database Error: " + error.message;
+  }
+
       contactForm.reset();
 
       setTimeout(() => {
