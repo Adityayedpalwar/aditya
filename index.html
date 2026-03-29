@@ -560,13 +560,31 @@
    <div class="glow-line"></div>
    <div class="glow-line"></div>
    <div class="glow-line"></div>
-  </div><!-- Navbar -->
-  <nav class="navbar py-4 px-6 md:px-12" id="navbar">
-   <div class="max-w-7xl mx-auto flex items-center justify-between"><a href="#home" class="font-bebas text-2xl md:text-3xl tracking-wider"> <span style="color: var(--accent-red);">A</span>DITYA<span class="text-gray-500">.</span> </a>
-    <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">HOME</a> <a href="#about" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">ABOUT</a> <a href="#work" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">WORK</a> <a href="#services" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">SERVICES</a> <a href="#contact" class="btn-primary text-sm py-3 px-6">CONTACT</a>
-    </div><button class="md:hidden text-white" id="menuBtn"> <i data-lucide="menu" class="w-6 h-6"></i> </button>
    </div>
-  </nav><!-- Mobile Menu -->
+  
+  <!-- Navbar -->
+  <nav class="navbar py-4 px-4 md:px-8" id="navbar">
+  <div class="w-full flex items-center justify-between">
+    <a href="#home" class="font-bebas text-2xl md:text-3xl tracking-wider"> 
+      <span style="color: var(--accent-red);">A</span>DITYA<span class="text-gray-500">.</span> 
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#home" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">HOME</a> 
+      <a href="#about" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">ABOUT</a> 
+      <a href="#work" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">WORK</a> 
+      <a href="#services" class="nav-link text-sm tracking-wide hover:text-red-500 transition-colors">SERVICES</a> 
+      <a href="#contact" class="btn-primary text-sm py-3 px-6">CONTACT</a>
+    </div>
+    <button class="md:hidden text-white p-2 -mr-2" id="menuBtn"> 
+      <i data-lucide="menu" class="w-8 h-8"></i> 
+    </button>
+  </div>
+</nav>
+
+<section id="home" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+
+  
+  <!-- Mobile Menu -->
   <div class="menu-overlay" id="menuOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
    <div class="p-8">
@@ -580,7 +598,9 @@
      </div>
     </div>
    </div>
-  </div><!-- Hero Section -->
+  </div>
+ 
+ <!-- Hero Section -->
   <section id="home" class="relative h-screen flex items-center justify-center">
    <div class="hero-video-container">
     <video class="hero-video" autoplay muted loop playsinline id="heroVideo"><source src="Intro.mp4" type="video/mp4">
@@ -604,18 +624,23 @@
     <div class="flex flex-col items-center text-gray-500"><span class="text-xs tracking-wider mb-2">SCROLL</span> <i data-lucide="chevron-down" class="w-5 h-5"></i>
     </div>
    </div>
-  </section><!-- About Section -->
+  </section>
+ 
+ <!-- About Section -->
+ 
   <section id="about" class="py-20 md:py-32 px-6 md:px-12 section">
-   <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+   <div class="w-full"> <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
      <div>
       <p class="text-red-500 text-sm tracking-[0.3em] mb-4">WHO I AM</p>
       <h2 id="aboutTitle" class="font-bebas text-4xl md:text-6xl lg:text-7xl tracking-wide mb-6">ABOUT <span style="color: var(--accent-red);">ME</span></h2>
       <div class="space-y-4 text-gray-300 leading-relaxed">
-       <p>I'm a passionate <span class="text-white font-semibold">Video Editor</span> and visual storyteller based in India. With years of experience in crafting compelling visual narratives, I transform raw footage into cinematic experiences that captivate audiences.</p>
-       <p>My expertise spans across video editing, motion graphics, poster design, and photography. I believe every frame tells a story, and my mission is to make that story unforgettable.</p>
-       <p>Whether it's a dynamic promotional video, a stunning poster, or professional presentation design, I bring creativity and precision to every project.</p>
-      </div>
+       <p>I'm a passionate <span class="text-white font-semibold">Video Editor</span> and visual storyteller based in India.</p>
+       <p>My expertise spans across video editing, motion graphics, poster design, and photography.</p>
+        <p>Whether it's a dynamic promotional video, a stunning poster, or professional presentation design, I bring creativity and precision to every project.</p>
+     </div>
+
+
+      
       <div class="mt-10">
   <h3 class="text-xl font-semibold mb-6">My Tools</h3>
   <div class="flex flex-wrap gap-4">
@@ -690,15 +715,21 @@
      </div>
     </div>
    </div>
-  </section><!-- Work Section -->
+  </section>
+ 
+ <!-- Work Section -->
   <section id="work" class="py-20 md:py-32 px-6 md:px-12 section">
    <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
      <p class="text-red-500 text-sm tracking-[0.3em] mb-4">PORTFOLIO</p>
      <h2 class="font-bebas text-4xl md:text-6xl lg:text-7xl tracking-wide">MY <span style="color: var(--accent-red);">WORK</span></h2>
-    </div><!-- Filter Tabs -->
+    </div>
+    
+    <!-- Filter Tabs -->
     <div class="flex flex-wrap justify-center gap-3 mb-12" id="filterTabs"><button class="filter-tab active" data-filter="all">All</button> <button class="filter-tab" data-filter="video">Video Edits</button> <button class="filter-tab" data-filter="poster">Posters</button> <button class="filter-tab" data-filter="photo">Photography</button> <button class="filter-tab" data-filter="other">Others</button>
-    </div><!-- Portfolio Grid -->
+    </div>
+    
+    <!-- Portfolio Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid"><!-- Video Edits - Larger Cards -->
      <div class="portfolio-item aspect-video col-span-1 md:col-span-2" data-category="video">
       <video muted loop playsinline poster="Intro.mp4"><source src="Intro.mp4" type="video/mp4">
