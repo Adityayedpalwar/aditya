@@ -216,11 +216,13 @@
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Ensure visibility on initial load */
-  opacity: 1;
-  transform: scale(1);
-  display: block;
+  /* FORCE VISIBILITY */
+  opacity: 1 !important; 
+  transform: scale(1) !important;
+  visibility: visible !important;
+  display: block !important;
 }
+
 
 
     .portfolio-item:hover {
@@ -1491,15 +1493,21 @@ contactForm.addEventListener('submit', async (e) => {
       setTimeout(() => formMessage.classList.add("hidden"), 5000);
     }
   });
- // Fix: Wait for the loading screen to vanish before showing work
+ // Fix// Aggressive fix for ADI-VISUALS work section
 window.addEventListener('load', () => {
+  // 1. Remove any 'hidden' classes immediately
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  portfolioItems.forEach(item => {
+    item.style.display = 'block';
+    item.style.opacity = '1';
+    item.style.transform = 'scale(1)';
+  });
+
+  // 2. Click the 'All' tab after the loader fades
   setTimeout(() => {
     const allTab = document.querySelector('.filter-tab[data-filter="all"]');
-    if (allTab) {
-      allTab.click();
-      console.log("Work section triggered after loading screen.");
-    }
-  }, 2700); // 2.7 seconds (Loading screen is 2.5s)
+    if (allTab) allTab.click();
+  }, 2600);
 });
 
 
