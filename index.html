@@ -1491,14 +1491,17 @@ contactForm.addEventListener('submit', async (e) => {
       setTimeout(() => formMessage.classList.add("hidden"), 5000);
     }
   });
-  // Fix to make the Work section visible immediately
-  document.addEventListener('DOMContentLoaded', () => {
+ // Fix: Wait for the loading screen to vanish before showing work
+window.addEventListener('load', () => {
+  setTimeout(() => {
     const allTab = document.querySelector('.filter-tab[data-filter="all"]');
     if (allTab) {
-      // Simulate a click on the 'All' tab to trigger visibility
-      allTab.click(); 
+      allTab.click();
+      console.log("Work section triggered after loading screen.");
     }
-  });
+  }, 2700); // 2.7 seconds (Loading screen is 2.5s)
+});
+
 
  
 </script>
