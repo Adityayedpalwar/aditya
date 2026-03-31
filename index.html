@@ -1491,6 +1491,16 @@ contactForm.addEventListener('submit', async (e) => {
       setTimeout(() => formMessage.classList.add("hidden"), 5000);
     }
   });
+  // Fix to make the Work section visible immediately
+  document.addEventListener('DOMContentLoaded', () => {
+    const allTab = document.querySelector('.filter-tab[data-filter="all"]');
+    if (allTab) {
+      // Simulate a click on the 'All' tab to trigger visibility
+      allTab.click(); 
+    }
+  });
+
+ 
 </script>
 
  
