@@ -209,13 +209,19 @@
     }
 
     /* Portfolio Grid */
-    .portfolio-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    /* Replace your existing .portfolio-item CSS with this */
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Ensure visibility on initial load */
+  opacity: 1;
+  transform: scale(1);
+  display: block;
+}
+
 
     .portfolio-item:hover {
       transform: scale(1.03);
