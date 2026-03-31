@@ -1231,19 +1231,26 @@ img, video {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          
-          // Animate skill bars
-          if (entry.target.id === 'about') {
-            const skillBars = entry.target.querySelectorAll('.skill-progress');
-            skillBars.forEach((bar, index) => {
-              setTimeout(() => {
-                bar.classList.add('animate');
-                const progress = parseFloat(bar.style.getPropertyValue('--progress'));
-                bar.style.transform = `scaleX(${progress})`;
-              }, index * 200);
-            });
-          }
+                // Animate skill bars
+      if (entry.target.id === 'about') {
+        const skillBars = entry.target.querySelectorAll('.skill-progress');
+        skillBars.forEach((bar, index) => {
+          setTimeout(() => {
+            bar.classList.add('animate');
+            const progress = parseFloat(bar.style.getPropertyValue('--progress'));
+            bar.style.transform = `scaleX(${progress})`;
+          }, index * 200);
+        });
+      }
+
+      // ADD THIS NEW LOGIC FOR WORK SECTION
+      if (entry.target.id === 'work') {
+        const allTab = document.querySelector('.filter-tab[data-filter="all"]');
+        if (allTab) {
+          allTab.click(); 
         }
+      }
+
       });
     }, observerOptions);
 
