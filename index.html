@@ -1471,13 +1471,13 @@ contactForm.addEventListener('submit', async (e) => {
 
       formMessage.classList.remove("hidden", "bg-red-900/50");
       formMessage.classList.add("bg-green-900/50", "text-green-300");
-      formMessage.textContent = "Sent!Thanks for reaching out to me. .";
+      formMessage.textContent = "Sent!Thanks for reaching out to me. 😊.";
       contactForm.reset();
 
     } catch (error) {
       formMessage.classList.remove("hidden");
       formMessage.classList.add("bg-red-900/50", "text-red-300");
-      formMessage.textContent = "Error: Check your Firebase Rules.";
+      formMessage.textContent = "Error: Oops ⌛️";
       console.error("Firestore Error:", error);
     } finally {
       submitBtn.textContent = originalBtnText;
